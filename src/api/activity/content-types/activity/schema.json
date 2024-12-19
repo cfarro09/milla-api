@@ -1,0 +1,112 @@
+{
+  "kind": "collectionType",
+  "collectionName": "activities",
+  "info": {
+    "singularName": "activity",
+    "pluralName": "activities",
+    "displayName": "Activity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "description": {
+      "type": "text"
+    },
+    "pictures": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "hasRights": {
+      "type": "boolean"
+    },
+    "address": {
+      "type": "string"
+    },
+    "lat": {
+      "type": "float"
+    },
+    "lng": {
+      "type": "float"
+    },
+    "reference": {
+      "type": "string"
+    },
+    "ages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::age.age"
+    },
+    "levels": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::level.level"
+    },
+    "additionalItems": {
+      "type": "text"
+    },
+    "activityType": {
+      "type": "enumeration",
+      "enum": [
+        "Actividad",
+        "Clase"
+      ]
+    },
+    "vacancies": {
+      "type": "integer"
+    },
+    "duration": {
+      "type": "integer"
+    },
+    "mainPictureIndex": {
+      "type": "integer"
+    },
+    "prices": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::price.price",
+      "mappedBy": "activity"
+    },
+    "schedules": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::schedule.schedule",
+      "mappedBy": "activity"
+    },
+    "creator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "activities"
+    },
+    "includedWith": {
+      "type": "text"
+    },
+    "notAllowedFor": {
+      "type": "text"
+    },
+    "paymentMethod": {
+      "type": "string"
+    },
+    "phonetopay": {
+      "type": "string"
+    }
+  }
+}

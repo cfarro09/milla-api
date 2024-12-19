@@ -1,0 +1,55 @@
+{
+  "kind": "collectionType",
+  "collectionName": "bookings",
+  "info": {
+    "singularName": "booking",
+    "pluralName": "bookings",
+    "displayName": "Booking",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "activity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::activity.activity"
+    },
+    "schedulesSelected": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::schedule.schedule"
+    },
+    "level": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::level.level"
+    },
+    "age": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::age.age"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "price": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::price.price"
+    },
+    "persons": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::person.person"
+    },
+    "creator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "bookings"
+    }
+  }
+}
