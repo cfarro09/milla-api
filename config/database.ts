@@ -1,8 +1,8 @@
 import path from 'path';
 
 export default ({ env }) => {
+  console.log('DATABASE_CLIENT', env('DATABASE_CLIENT', 'sqlite'))
   const client = env('DATABASE_CLIENT', 'sqlite');
-  console.log(env('DATABASE_CLIENT', 'sqlite'))
   console.log(env('DATABASE_HOST', 'localhost'))
   console.log(env.int('DATABASE_PORT', 5432))
   console.log(env('DATABASE_NAME', 'strapi'))
