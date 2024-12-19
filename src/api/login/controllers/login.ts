@@ -17,7 +17,7 @@ export default {
   login: async (ctx, next) => {
     try {
       const { jwt } = ctx.request.body;
-      const response = await fetch ('https://milla.us.auth0.com/userinfo', {
+      const response = await fetch ('https://dev-6m4hbmrr1ebgapmp.us.auth0.com/userinfo', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
