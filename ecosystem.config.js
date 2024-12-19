@@ -6,6 +6,7 @@ module.exports = {
         args: "start",
         env: {
           NODE_ENV: "production",
+          NODE_VERSION: "18.0.0",
         },
       },
     ],
