@@ -35,4 +35,61 @@ module.exports = {
             ctx.internalServerError('Error al enviar el correo de confirmación');
         }
     },
+
+    async createBooking(ctx) {
+        const {
+            activity,
+            schedulesSelected,
+            persons,
+            age,
+            startDate,
+            price,
+            creator,
+        } = ctx.request.body;
+
+        if (!activity || !schedulesSelected || !age || !startDate || !price || !creator) {
+            return ctx.badRequest('Missing required fields');
+        }
+
+        // Registrar las personas si existen
+        let personIds = [];
+        if (persons && persons.length > 0) {
+            for (const person of persons) {
+                const { name, dni } = person;
+
+                if (!name || !dni) {
+                    return ctx.badRequest('Each person must have a name and dni');
+                }
+
+                // Buscar si la persona ya existe por su DNI
+                // let existingPerson = await strapi.db.query('api::person.person').findOne({
+                //   where: { dni },
+                // });
+
+                // Si no existe, crearla
+                // if (!existingPerson) {
+                const existingPerson = await strapi.db.query('api::person.person').create({
+                    data: { name, dni },
+                });
+                // }
+
+                personIds.push(existingPerson.id);
+            }
+        }
+
+        // Crear el booking con los IDs de las personas registradas
+        const booking = await strapi.db.query('api::booking.booking').create({
+            data: {
+                activity,
+                schedulesSelected,
+                persons: personIds,
+                age,
+                startDate,
+                price,
+                creator,
+            },
+        });
+
+        ctx.send(booking);
+    },
 };

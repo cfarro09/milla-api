@@ -9,5 +9,14 @@ module.exports = {
           middlewares: [],
         },
       },
+      {
+        method: 'POST',
+        path: '/bookings/create-booking',
+        handler: 'booking-email.createBooking',
+        config: {
+          policies: [],
+          middlewares: [],
+        },
+      },
     ],
   };
