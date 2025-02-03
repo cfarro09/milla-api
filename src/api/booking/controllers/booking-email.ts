@@ -47,7 +47,7 @@ module.exports = {
             creator,
         } = ctx.request.body;
 
-        if (!activity || !schedulesSelected || !age || !startDate || !price || !creator) {
+        if (!activity || !schedulesSelected || !startDate || !price || !creator) {
             return ctx.badRequest('Missing required fields');
         }
 
@@ -83,7 +83,7 @@ module.exports = {
                 activity,
                 schedulesSelected,
                 persons: personIds,
-                age,
+                age: age || null,
                 startDate,
                 price,
                 creator,
