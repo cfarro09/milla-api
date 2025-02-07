@@ -17,7 +17,7 @@ module.exports = {
             emailsList.push(booking.creator.email);
             
             // Extraer la fecha en formato dd/mm/yyyy (UTC)
-            const ff = new Date(booking.schedulesSelected[0].hour);
+            const ff = new Date(booking.startDate + " 10:00:00");
             const dia = String(ff.getUTCDate()).padStart(2, '0');
             const mes = String(ff.getUTCMonth() + 1).padStart(2, '0');
             const anio = ff.getUTCFullYear();
@@ -25,8 +25,8 @@ module.exports = {
             const fecha = `${dia}/${mes}/${anio}`;
 
             // Extraer la hora en formato hh:mm am/pm (UTC)
-            let horas = ff.getUTCHours();
-            const minutos = String(ff.getUTCMinutes()).padStart(2, '0');
+            let horas = ff.getHours();
+            const minutos = String(ff.getMinutes()).padStart(2, '0');
             const ampm = horas < 12 ? 'am' : 'pm';
 
             // Para convertir de formato 24h a 12h
