@@ -33,7 +33,7 @@ module.exports = {
             horas = horas % 12;
             horas = horas ? horas : 12; // si `horas` es 0, asignarle 12
 
-            const hora = `${horas}:${minutos} ${ampm}`;
+            const hora = `${(horas + "").padStart(2, "0")}:${minutos} ${ampm}`;
             
             console.log("booking", JSON.stringify(booking))
 
