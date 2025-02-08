@@ -18,6 +18,8 @@ module.exports = {
             
             // Extraer la fecha en formato dd/mm/yyyy (UTC)
             const ff = new Date(booking.startDate + " 10:00:00");
+            ff.setDate(ff.getDate() - 1);
+
             const dia = String(ff.getUTCDate()).padStart(2, '0');
             const mes = String(ff.getUTCMonth() + 1).padStart(2, '0');
             const anio = ff.getUTCFullYear();
@@ -25,7 +27,11 @@ module.exports = {
             const fecha = `${dia}/${mes}/${anio}`;
             const hh = new Date(booking.schedulesSelected[0].hour);
             // Extraer la hora en formato hh:mm am/pm (UTC)
-            let horas = hh.getHours();
+            hh.setUTCHours(hh.getUTCHours() - 1);
+
+            // Ahora puedes extraer la nueva hora en UTC
+            let horas = hh.getUTCHours();
+
             const minutos = String(hh.getMinutes()).padStart(2, '0');
 
             const hora = `${(horas + "").padStart(2, "0")}:${minutos}`;
