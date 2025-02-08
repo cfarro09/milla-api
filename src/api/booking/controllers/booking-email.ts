@@ -27,13 +27,8 @@ module.exports = {
             // Extraer la hora en formato hh:mm am/pm (UTC)
             let horas = hh.getHours();
             const minutos = String(hh.getMinutes()).padStart(2, '0');
-            const ampm = horas < 12 ? 'am' : 'pm';
 
-            // Para convertir de formato 24h a 12h
-            horas = horas % 12;
-            horas = horas ? horas : 12; // si `horas` es 0, asignarle 12
-
-            const hora = `${(horas + "").padStart(2, "0")}:${minutos} ${ampm}`;
+            const hora = `${(horas + "").padStart(2, "0")}:${minutos}`;
             
             console.log("booking", JSON.stringify(booking))
 
