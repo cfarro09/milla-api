@@ -27,10 +27,10 @@ module.exports = {
             const fecha = `${dia}/${mes}/${anio}`;
             const hh = new Date(booking.schedulesSelected[0].hour);
             // Extraer la hora en formato hh:mm am/pm (UTC)
-            hh.setUTCHours(hh.getUTCHours() - 1);
+            hh.setUTCHours(hh.getHours() - 1);
 
             // Ahora puedes extraer la nueva hora en UTC
-            let horas = hh.getUTCHours();
+            let horas = hh.getHours();
 
             const minutos = String(hh.getMinutes()).padStart(2, '0');
 
