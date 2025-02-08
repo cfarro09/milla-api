@@ -25,8 +25,8 @@ module.exports = {
             const fecha = `${dia}/${mes}/${anio}`;
             const hh = new Date(booking.schedulesSelected[0].hour);
             // Extraer la hora en formato hh:mm am/pm (UTC)
-            let horas = hh.getHours();
-            const minutos = String(hh.getMinutes()).padStart(2, '0');
+            let horas = hh.getUTCHours();
+            const minutos = String(hh.getUTCMinutes()).padStart(2, '0');
             const ampm = horas < 12 ? 'am' : 'pm';
 
             // Para convertir de formato 24h a 12h
