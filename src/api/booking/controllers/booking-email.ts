@@ -27,7 +27,7 @@ module.exports = {
             const fecha = `${dia}/${mes}/${anio}`;
             const hh = new Date(booking.schedulesSelected[0].hour);
             // Extraer la hora en formato hh:mm am/pm (UTC)
-            hh.setUTCHours(hh.getHours() - 1);
+            hh.setHours(hh.getHours() - 6);
 
             // Ahora puedes extraer la nueva hora en UTC
             let horas = hh.getHours();
