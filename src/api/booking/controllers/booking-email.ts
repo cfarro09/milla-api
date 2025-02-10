@@ -17,8 +17,8 @@ module.exports = {
             emailsList.push(booking.creator.email);
             
             // Extraer la fecha en formato dd/mm/yyyy (UTC)
-            const ff = new Date(booking.startDate + " 10:00:00");
-            ff.setDate(ff.getDate() - 1);
+            const ff = new Date(booking.startDate + " 15:00:00");
+            // ff.setDate(ff.getDate() - 1);
 
             const dia = String(ff.getUTCDate()).padStart(2, '0');
             const mes = String(ff.getUTCMonth() + 1).padStart(2, '0');
