@@ -110,6 +110,7 @@ module.exports = {
                 startDate,
                 price,
                 creator,
+                publishedAt: new Date(), // Publicar automáticamente
             },
         });
 
